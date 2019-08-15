@@ -28,5 +28,8 @@ var docDefinition = {
 };
 
 var pdfDoc = printer.createPdfKitDocument(docDefinition);
-pdfDoc.pipe(fs.createWriteStream("./qrCode.pdf"));
+pdfDoc.on("end", function() {
+  console.log("end");
+});
+pdfDoc.pipe(fs.createWriteStream("./qrCodex.pdf"));
 pdfDoc.end();
